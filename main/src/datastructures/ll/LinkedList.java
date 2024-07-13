@@ -16,24 +16,6 @@ public class LinkedList {
     }
 
 
-    //   +===================================================+
-    //   |                  WRITE YOUR CODE HERE             |
-    //   | Description:                                      |
-    //   | - Constructor for the LinkedList class.           |
-    //   | - Initializes the linked list with a single node. |
-    //   |                                                   |
-    //   | Parameters:                                       |
-    //   | - value: The integer value of the first node in   |
-    //   |   the newly created linked list.                  |
-    //   |                                                   |
-    //   | Behavior:                                         |
-    //   | - A new Node is created with the given value.     |
-    //   | - This node is set as both the head and tail of   |
-    //   |   the list, indicating it is the only node in the |
-    //   |   list at creation.                               |
-    //   | - The length of the list is initialized to 1.     |
-    //   +===================================================+
-
     public LinkedList(int value) {
         this.head = new Node(value);
         this.tail = head;
