@@ -30,3 +30,4 @@ bin/
 /algorithmEx.iml
 /.idea/
 /classes/
+*.class

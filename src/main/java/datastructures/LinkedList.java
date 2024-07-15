@@ -1,4 +1,4 @@
-package datastructures.ll;
+package datastructures;
 
 public class LinkedList {
 
@@ -123,6 +123,77 @@ public class LinkedList {
             temp = temp.next;
         }
         return temp;
+    }
+
+    public boolean set(int index, int value) {
+        if(index < 0 || index>=length || length==0) {
+            return false;
+        }
+
+        Node temp = head;
+        for(int i=0; i<length; i++) {
+            if(i==index){
+                break;
+            }
+            temp = temp.next;
+        }
+        temp.value = value;
+        return true;
+    }
+
+    public boolean insert(int index, int value) {
+        if(index < 0 || index>length) {
+            return false;
+        }
+
+        if(index==0) {
+            prepend(value);
+            return true;
+        }
+
+        if(index==length) {
+            append(value);
+            return true;
+        }
+
+        Node pre = head;
+        Node temp = head;
+        for(int i=0; i<index; i++){
+            pre = temp;
+            temp = temp.next;
+        }
+        Node newNode = new Node(value);
+        pre.next = newNode;
+        newNode.next = temp;
+        length ++;
+        return true;
+    }
+
+    public Node remove(int index) {
+        if(index < 0 || index>=length || length==0) {
+            return null;
+        }
+
+        if(index == 0) return removeFirst();
+        if(index == length-1) return removeLast();
+
+        Node temp = head;
+        Node pre = head;
+        for(int i=0; i<index; i++) {
+            pre = temp;
+            temp = temp.next;
+        }
+        pre.next = temp.next;
+        temp.next = null;
+        length --;
+        return temp;
+    }
+
+    public void reverse() {
+        for(int i=0; i<length-1; i++){
+            Node node = remove(length-2-i);
+            append(node.value);
+        }
     }
 
     public void printList() {
