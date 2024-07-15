@@ -1,4 +1,4 @@
-package leetcode.ll.p0019;
+package leetcode.ll.m0019;
 
 import leetcode.ll.ListNode;
 

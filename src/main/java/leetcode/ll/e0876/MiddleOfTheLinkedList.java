@@ -1,4 +1,4 @@
-package leetcode.ll.p0876;
+package leetcode.ll.e0876;
 
 import leetcode.ll.ListNode;
 

@@ -1,8 +1,6 @@
-package leetcode.ll.p0086;
+package leetcode.ll.m0086;
 
 import leetcode.ll.ListNode;
-
-import java.util.List;
 
 public class PartitionList {
 
