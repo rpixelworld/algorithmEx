@@ -1,5 +1,7 @@
 package datastructures;
 
+import leetcode.ll.ListNode;
+
 public class DoublyLinkedList {
 
     private Node head;
@@ -183,8 +185,127 @@ public class DoublyLinkedList {
         return cur;
     }
 
+    public void swapFirstLast() {
+        if (length<=1) return;
+
+        if (length==2) {
+            Node temp = head;
+            head = tail;
+            tail = temp;
+            head.next = tail;
+            head.prev = null;
+            tail.next = null;
+            tail.prev = head;
+            return;
+        }
+
+        Node tempHead = head.next;
+        Node tempTail = tail.prev;
+
+        head.next = null;
+        tail.prev = null;
+        tempHead.prev = null;
+        tempTail.next = null;
+
+        Node temp = head;
+        head = tail;
+        tail = temp;
+
+        head.next = tempHead;
+        tempHead.prev = head;
+        tail.prev = tempTail;
+        tempTail.next = tail;
+    }
+
+    public void reverse() {
+        if(length<=1) return;
+
+        Node forward = head;
+        Node backward = tail;
+        while (forward != backward && forward.prev != backward && backward.next != forward) {
+            int tempV = forward.value;
+            forward.value = backward.value;
+            backward.value = tempV;
+
+            forward = forward.next;
+            backward = backward.prev;
+        }
+    }
+
+    public boolean isPalindrome() {
+        if(length<=1) return true;
+
+        Node forward = head;
+        Node backward = tail;
+        while (forward != backward && forward.prev != backward && backward.next != forward) {
+            if(forward.value != backward.value) return false;
+
+            forward = forward.next;
+            backward = backward.prev;
+        }
+
+        return true;
+    }
+
+
+    public void swapPairs_swapValue() {
+        if (length<=1) return;
+
+        Node pre;
+        Node cur = head;
+        int i=0;
+        while (cur.next!=null) {
+
+            pre = cur;
+            cur = cur.next;
+            if(i%2==0){
+
+                Node temp = pre;
+                pre = cur;
+                cur = temp;
+
+//                int tempV = pre.value;
+//                pre.value = cur.value;
+//                cur.value = tempV;
+            }
+            i++;
+
+        }
+    }
+
+    public void swapPairs(){
+        if (length<=1) return;
+
+        Node dummy = new Node(0);
+        dummy.next = head;
+        head.prev = dummy;
+
+        while (head!=null) {
+            Node first = head;
+            Node second = head.next;
+            Node previous = first.prev;
+            if(second==null) break;
+
+            //swap
+            System.out.println("head=" + head.value + ", first= " + first.value + ", second=" + second.value + ", previous=" + previous.value);
+            previous.next = second;
+            first.next = second.next;
+            if(second.next!=null) {
+                first.next.prev = first;
+            }
+            second.prev = previous;
+            second.next = first;
+            first.prev = second;
+
+            head = head.next;
+        }
+        head = dummy.next;
+        head.prev = null;
+    }
+
     public void printList() {
         Node temp = head;
+        System.out.println("\n");
         while (temp != null) {
             System.out.println(temp.value);
             temp = temp.next;
